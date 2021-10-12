@@ -403,6 +403,7 @@ public class JdbcProjectImpl implements ProjectLoader {
           transOperator.getConnection().commit();
           logger.info("Finished update for " + localFile.getName() + " chunk " + chunk);
         } catch (final SQLException e) {
+          logger.error(e.getMessage(), e);
           throw new ProjectManagerException("Error Chunking during uploading files to db...");
         }
         ++chunk;
